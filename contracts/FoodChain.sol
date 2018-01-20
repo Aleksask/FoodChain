@@ -12,8 +12,8 @@ contract FoodChain {
         address Uid;
         string Name;
         string Surname;
-        uint8 Longitude;
-        uint8 Lattitude;
+        uint256 Longitude;
+        uint256 Lattitude;
         mapping (string => Field) Land;
     }
 
