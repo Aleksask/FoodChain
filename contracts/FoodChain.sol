@@ -39,8 +39,8 @@ contract FoodChain {
     }
 
     uint totalOrders = 0;
-    mapping (address=>Farmer) Farmers;
-    mapping (address=>Buyer) Buyers;
+    mapping (address=>Farmer) public Farmers;
+    mapping (address=>Buyer) public Buyers;
     mapping (address=>uint) BuyerActiveBids;
     BuyOrder[] allOrders;
     
