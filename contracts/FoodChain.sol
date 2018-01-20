@@ -12,8 +12,8 @@ contract FoodChain {
         address Uid;
         string Name;
         string Surname;
-        uint8 Longitude;
-        uint8 Lattitude;
+        uint Longitude;
+        uint Lattitude;
         mapping (string => Field) Land;
     }
 
@@ -35,13 +35,14 @@ contract FoodChain {
         uint Uid;
         BuyOrder Order;
         // Farmer to What quantity of string does each farmer put for sale
-        mapping(address => uint) ShareInCooperative;
+        
     }
 
     uint totalOrders = 0;
     Farmer[] Farmers;
     mapping (address=>Buyer) public Buyers;
     mapping (address=>uint) BuyerActiveBids;
+    mapping (uint => mapping (address => uint)) ShareInCooperative;
     BuyOrder[] allOrders;
     CooperativeContract[] liveContracts;
     
@@ -102,17 +103,18 @@ contract FoodChain {
         return newOrderId;
     }
 
-    function matchFarmersAndBuyers() public {
+    function matchFarmersAndBuyers() internal {
         
         for (uint256 j; j < allOrders.length; j++) {
-            var order = allOrders[j];
+            BuyOrder memory order = allOrders[j];
             var orderQuantity = order.Quantity;
             uint256 filledQuantity = 0;
             //todo create a cooperative contract
-            var coopContract = CooperativeContract({
+            CooperativeContract memory coopContract = CooperativeContract({
                                     Uid : order.Id,
                                     Order : order});
-
+            
+            
             for (uint256 i; i < Farmers.length ; i++) {
                 var farmer = Farmers[i];
                 var field = farmer.Land[order.Product];
@@ -128,9 +130,8 @@ contract FoodChain {
                     filledQuantity += quantityToFill;
 
                     field.Yield -= quantityToFill;
-
-                    var x = coopContract.ShareInCooperative;
-                    x[farmer.Id] = quantityToFill;
+                    //var farmerid = farmer.Id;
+                    ShareInCooperative[j][farmer.Uid] = quantityToFill;
 
                     //todo add farmer to cooperative contract
 
@@ -145,7 +146,7 @@ contract FoodChain {
             liveContracts.push(coopContract);
         }
     }
-
+  
     function max(uint a, uint b) public returns (uint) {
         if (a > b) 
             return a;
