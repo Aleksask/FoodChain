@@ -1,10 +1,8 @@
-pragma solidity ^0.4.4;
+pragma solidity ^0.4.17;
 
 contract FoodChain {
     
-
-    struct Field {
-    
+    struct Field {    
         string Produce;
         uint Yield;
     }
@@ -26,6 +24,7 @@ contract FoodChain {
 
     struct BuyOrder {  
         uint Id;
+        address Buyer;
         string Product;
         uint Quantity;
         uint Price;        
@@ -42,7 +41,8 @@ contract FoodChain {
     uint totalOrders = 0;
     mapping (address=>Farmer) Farmers;
     mapping (address=>Buyer) Buyers;
-    mapping (uint=>BuyOrder) ActiveBids;
+    mapping (address=>uint) BuyerActiveBids;
+    BuyOrder[] allOrders;
     
 
     function registerFarmer(address Uid,
@@ -68,12 +68,32 @@ contract FoodChain {
         });
     }
 
-    // function registerBuyer(Buyer buyer) public {
-    //     Buyers[buyer.Uid] = buyer;
-    // }
+    function registerBuyer(address Uid,
+        string Name,
+        string Location) public 
+    {
+        Buyers[Uid] = Buyer({
+            Uid : Uid,
+            Name : Name,
+            Location : Location
+        });
+    }
 
-    // function putAnOrder(BuyOrder bidOrder) public {
-    //     ActiveBids[totalOrders++] = bidOrder;
-    // }
+    function putAnOrder(string produce, uint quantity, uint price, address buyerId) public returns (uint) {
+        uint newOrderId = ++totalOrders;
+        var order = BuyOrder({
+             Id : newOrderId,
+             Buyer : buyerId,
+             Product : produce,
+             Quantity : quantity,
+             Price : price  
+        });
+        
+        allOrders.push(order);
+
+        BuyerActiveBids[buyerId] = newOrderId;
+
+        return newOrderId;
+    }
 
 }
