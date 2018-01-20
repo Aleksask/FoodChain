@@ -1,9 +1,12 @@
-pragma solidity ^0.4.17;
+pragma solidity ^0.4.4;
 
 contract FoodChain {
     
-    struct Commodity {
-        string Symbol;
+
+    struct Field {
+    
+        string Produce;
+        uint Yield;
     }
 
     struct Farmer {
@@ -11,7 +14,8 @@ contract FoodChain {
         string Name;
         string Surname;
         uint Longitude;
-        uint Lattitude;
+        uint Lattitude;    
+        mapping (string=>Field) Land;
     }
 
     struct Buyer {
@@ -22,29 +26,54 @@ contract FoodChain {
 
     struct BuyOrder {  
         uint Id;
-        Commodity Product;
+        string Product;
         uint Quantity;
         uint Price;        
     }
 
     struct Cooperative {    
         address Uid;
-        Commodity Product;
-        HarvestMonth uint;
-        mapping(Farmer => uint)  // What quantity of commodity does each farmer put for sale
+        string Product;
+        uint HarvestMonth;
+        // Farmer to What quantity of string does each farmer put for sale
+        mapping(address => uint) ShareInCooperative;  
     }
 
     uint totalOrders = 0;
     mapping (address=>Farmer) Farmers;
+    mapping (address=>Buyer) Buyers;
     mapping (uint=>BuyOrder) ActiveBids;
+    
 
-    function register(Farmer newFarmer) public {
-       // Users[newUser.Uid]
-       Farmers[newFarmer.Uid] = newFarmer;
+    function registerFarmer(address Uid,
+        string Name,
+        string Surname,
+        uint Longitude,
+        uint Lattitude) public 
+    {
+       Farmers[Uid] = Farmer({ 
+        Uid : Uid, 
+       Name : Name, 
+       Surname : Surname, 
+       Longitude : Longitude, 
+       Lattitude : Lattitude
+       });
     }
 
-    function putAnOrder(BuyOrder bidOrder) public {
-        ActiveBids[totalOrders++] = bidOrder;
+    function registerFarmerField(address farmerUid, string produce, uint yield) public {
+        
+        Farmers[farmerUid].Land[produce] = Field({
+            Produce : produce,
+            Yield : yield
+        });
     }
+
+    // function registerBuyer(Buyer buyer) public {
+    //     Buyers[buyer.Uid] = buyer;
+    // }
+
+    // function putAnOrder(BuyOrder bidOrder) public {
+    //     ActiveBids[totalOrders++] = bidOrder;
+    // }
 
 }
