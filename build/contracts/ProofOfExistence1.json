@@ -1,0 +1,467 @@
+{
+  "contractName": "ProofOfExistence1",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "doc",
+          "type": "string"
+        }
+      ],
+      "name": "notorize",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "doc",
+          "type": "string"
+        }
+      ],
+      "name": "proofFor",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "proof",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b6102408061001e6000396000f300606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638ae475a91461005c578063f6c1acdf146100b9578063faf924cf14610132575b600080fd5b341561006757600080fd5b6100b7600480803590602001908201803590602001908080601f01602080910402602001604051908101604052809392919081815260200183838082843782019150505050505091905050610163565b005b34156100c457600080fd5b610114600480803590602001908201803590602001908080601f01602080910402602001604051908101604052809392919081815260200183838082843782019150505050505091905050610179565b60405180826000191660001916815260200191505060405180910390f35b341561013d57600080fd5b61014561020e565b60405180826000191660001916815260200191505060405180910390f35b61016c81610179565b6000816000191690555050565b60006002826000604051602001526040518082805190602001908083835b6020831015156101bc5780518252602082019150602081019050602083039250610197565b6001836020036101000a03801982511681845116808217855250505050505090500191505060206040518083038160008661646e5a03f115156101fe57600080fd5b5050604051805190509050919050565b600054815600a165627a7a72305820f40a8dac9c1d7ae49a5b607cb8991a9cf5d97b477a78abed4411f18bac2a286e0029",
+  "deployedBytecode": "0x606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638ae475a91461005c578063f6c1acdf146100b9578063faf924cf14610132575b600080fd5b341561006757600080fd5b6100b7600480803590602001908201803590602001908080601f01602080910402602001604051908101604052809392919081815260200183838082843782019150505050505091905050610163565b005b34156100c457600080fd5b610114600480803590602001908201803590602001908080601f01602080910402602001604051908101604052809392919081815260200183838082843782019150505050505091905050610179565b60405180826000191660001916815260200191505060405180910390f35b341561013d57600080fd5b61014561020e565b60405180826000191660001916815260200191505060405180910390f35b61016c81610179565b6000816000191690555050565b60006002826000604051602001526040518082805190602001908083835b6020831015156101bc5780518252602082019150602081019050602083039250610197565b6001836020036101000a03801982511681845116808217855250505050505090500191505060206040518083038160008661646e5a03f115156101fe57600080fd5b5050604051805190509050919050565b600054815600a165627a7a72305820f40a8dac9c1d7ae49a5b607cb8991a9cf5d97b477a78abed4411f18bac2a286e0029",
+  "sourceMap": "27:238:2:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "27:238:2:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;90:70;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;168:94;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;61:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;90:70;139:13;148:3;139:8;:13::i;:::-;131:5;:21;;;;;;;90:70;:::o;168:94::-;216:7;243:11;250:3;243:11;;;;;;;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:2;51:6;36:153;;;182:3;176:5;171:3;164:6;98:2;93:3;89;82:19;;123:2;118:3;114;107:19;;148:2;143:3;139;132:19;;36:153;;;274:1;267:3;263:2;259:3;254;250;246;315:4;311:3;305;299:5;295:3;356:4;350:3;344:5;340:3;389:7;380;377:2;372:3;365:6;3:399;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;236:18:2;;168:94;;;:::o;61:20::-;;;;:::o",
+  "source": "pragma solidity ^0.4.4;\r\n\r\ncontract ProofOfExistence1 {\r\n    bytes32 public proof;\r\n\r\n    function notorize(string doc) {\r\n        proof = proofFor(doc);\r\n    }\r\n\r\n    function proofFor(string doc) constant returns (bytes32) {\r\n        return sha256(doc);\r\n    }\r\n}\r\n",
+  "sourcePath": "C:\\Development\\FoodChain\\contracts\\ProofOfExistence1.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/C/Development/FoodChain/contracts/ProofOfExistence1.sol",
+      "exportedSymbols": {
+        "ProofOfExistence1": [
+          460
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".4"
+          ]
+        },
+        "id": 433,
+        "name": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            460
+          ],
+          "name": "ProofOfExistence1",
+          "scope": 461
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "proof",
+              "scope": 460,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes32",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes32",
+                  "type": "bytes32"
+                },
+                "id": 434,
+                "name": "ElementaryTypeName",
+                "src": "61:7:2"
+              }
+            ],
+            "id": 435,
+            "name": "VariableDeclaration",
+            "src": "61:20:2"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "notorize",
+              "payable": false,
+              "scope": 460,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "doc",
+                      "scope": 447,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string memory",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 436,
+                        "name": "ElementaryTypeName",
+                        "src": "108:6:2"
+                      }
+                    ],
+                    "id": 437,
+                    "name": "VariableDeclaration",
+                    "src": "108:10:2"
+                  }
+                ],
+                "id": 438,
+                "name": "ParameterList",
+                "src": "107:12:2"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 439,
+                "name": "ParameterList",
+                "src": "120:0:2"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "bytes32"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 435,
+                              "type": "bytes32",
+                              "value": "proof"
+                            },
+                            "id": 440,
+                            "name": "Identifier",
+                            "src": "131:5:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "bytes32",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_string_memory_ptr",
+                                      "typeString": "string memory"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 459,
+                                  "type": "function (string memory) view returns (bytes32)",
+                                  "value": "proofFor"
+                                },
+                                "id": 441,
+                                "name": "Identifier",
+                                "src": "139:8:2"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 437,
+                                  "type": "string memory",
+                                  "value": "doc"
+                                },
+                                "id": 442,
+                                "name": "Identifier",
+                                "src": "148:3:2"
+                              }
+                            ],
+                            "id": 443,
+                            "name": "FunctionCall",
+                            "src": "139:13:2"
+                          }
+                        ],
+                        "id": 444,
+                        "name": "Assignment",
+                        "src": "131:21:2"
+                      }
+                    ],
+                    "id": 445,
+                    "name": "ExpressionStatement",
+                    "src": "131:21:2"
+                  }
+                ],
+                "id": 446,
+                "name": "Block",
+                "src": "120:40:2"
+              }
+            ],
+            "id": 447,
+            "name": "FunctionDefinition",
+            "src": "90:70:2"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "proofFor",
+              "payable": false,
+              "scope": 460,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "doc",
+                      "scope": 459,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string memory",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 448,
+                        "name": "ElementaryTypeName",
+                        "src": "186:6:2"
+                      }
+                    ],
+                    "id": 449,
+                    "name": "VariableDeclaration",
+                    "src": "186:10:2"
+                  }
+                ],
+                "id": 450,
+                "name": "ParameterList",
+                "src": "185:12:2"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 459,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 451,
+                        "name": "ElementaryTypeName",
+                        "src": "216:7:2"
+                      }
+                    ],
+                    "id": 452,
+                    "name": "VariableDeclaration",
+                    "src": "216:7:2"
+                  }
+                ],
+                "id": 453,
+                "name": "ParameterList",
+                "src": "215:9:2"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 453
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "bytes32",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 648,
+                              "type": "function () pure returns (bytes32)",
+                              "value": "sha256"
+                            },
+                            "id": 454,
+                            "name": "Identifier",
+                            "src": "243:6:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 449,
+                              "type": "string memory",
+                              "value": "doc"
+                            },
+                            "id": 455,
+                            "name": "Identifier",
+                            "src": "250:3:2"
+                          }
+                        ],
+                        "id": 456,
+                        "name": "FunctionCall",
+                        "src": "243:11:2"
+                      }
+                    ],
+                    "id": 457,
+                    "name": "Return",
+                    "src": "236:18:2"
+                  }
+                ],
+                "id": 458,
+                "name": "Block",
+                "src": "225:37:2"
+              }
+            ],
+            "id": 459,
+            "name": "FunctionDefinition",
+            "src": "168:94:2"
+          }
+        ],
+        "id": 460,
+        "name": "ContractDefinition",
+        "src": "27:238:2"
+      }
+    ],
+    "id": 461,
+    "name": "SourceUnit",
+    "src": "0:267:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x2c2b9c9a4a25e24b174f26114e8926a9f2128fe4"
+    }
+  },
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-01-21T11:39:47.086Z"
+}
