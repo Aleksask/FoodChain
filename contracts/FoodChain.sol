@@ -103,7 +103,16 @@ contract FoodChain {
         return newOrderId;
     }
 
-    function matchFarmersAndBuyers() internal {
+    function cancelOrder(address buyerId, uint orderId) public {
+        for (uint256 j; j < allOrders.length; j++) {
+            if (allOrders[j].Buyer == buyerId && allOrders[j].Id == orderId) {
+                allOrders[j].Quantity = 0;
+                break;
+            }
+        }
+    }
+
+    function matchFarmersAndBuyers() public {
         
         for (uint256 j; j < allOrders.length; j++) {
             BuyOrder memory order = allOrders[j];
