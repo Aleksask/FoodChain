@@ -147,14 +147,14 @@ contract FoodChain {
         }
     }
   
-    function max(uint a, uint b) public returns (uint) {
+    function max(uint a, uint b) pure public returns (uint) {
         if (a > b) 
             return a;
         else 
             return b;
     }
 
-    function min(uint a, uint b) public returns (uint) {
+    function min(uint a, uint b) pure public returns (uint) {
         if (a < b) 
             return a;
         else 
